@@ -1,0 +1,17 @@
+# Статический лендинг (Apache). Удалите файл, если хостинг не Apache.
+
+DirectoryIndex index.html
+Options -Indexes
+AddDefaultCharset UTF-8
+
+<IfModule mod_headers.c>
+  Header set X-Content-Type-Options "nosniff"
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+  <FilesMatch "\.(css|js|jpg|jpeg|png|gif|webp|svg|ico|woff2)$">
+    Header set Cache-Control "public, max-age=604800, immutable"
+  </FilesMatch>
+</IfModule>
+
+<IfModule mod_mime.c>
+  AddType image/svg+xml svg svgz
+</IfModule>
