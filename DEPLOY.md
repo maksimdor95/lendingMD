@@ -7,10 +7,11 @@
 | Путь | Назначение |
 |------|------------|
 | `index.html`, `styles.css` | Разметка и стили |
-| `hero-photo.svg` | Плейсхолдер портрета в герое (можно заменить на `hero-photo.jpg`) |
+| `hero-photo.jpg` | Фото в герое |
+| `hero-photo.svg` | Запасной плейсхолдер (если нет jpg — в `index.html` укажите `src="hero-photo.svg"`) |
 | `favicon.svg` | Иконка вкладки |
 | `robots.txt`, `404.html` | Служебные страницы |
-| `assets/` | Опционально: свои иконки (сейчас карточки используют favicons Google) |
+| `assets/pub-computerra-icon.png` | Иконка карточки Computerra (остальные — через favicons Google) |
 | `vercel.json` | Настройки **Vercel** (заголовки безопасности) |
 | `netlify.toml` | Настройки **Netlify** |
 | `.htaccess` | Только **Apache** (общий хостинг) |
@@ -53,11 +54,9 @@ git push -u origin main
 
 См. предыдущие версии инструкций: залить те же файлы в корень сайта; для GitHub Pages — Settings → Pages → ветка `main`, папка `/ (root)`.
 
-## Замена плейсхолдера на фото
+## Если нет `hero-photo.jpg`
 
-1. Положите `hero-photo.jpg` рядом с `index.html`.
-2. В `index.html` у тега `<img>` в герое замените `src="hero-photo.svg"` на `src="hero-photo.jpg"`.
-3. Уберите или оставьте комментарий над тегом — по желанию.
+В герое временно укажите `src="hero-photo.svg"` (файл уже в репозитории).
 
 ## После появления домена
 
@@ -73,5 +72,5 @@ git push -u origin main
 
 ## Проверка
 
-- Вкладка Network: нет 404 на `styles.css`, `hero-photo.svg` (или `.jpg`), `favicon.svg`.
+- Вкладка Network: нет 404 на `styles.css`, `hero-photo.jpg`, `favicon.svg`, `assets/pub-computerra-icon.png`.
 - Пройти по якорям меню, проверить кнопки (Telegram, hh.ru).
