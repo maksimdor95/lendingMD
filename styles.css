@@ -496,7 +496,7 @@ body.hero-menu-open {
   position: relative;
   background: #fff;
   min-height: 522px;
-  padding: var(--section-bridge-pad-top) 0 61px;
+  padding: var(--section-bridge-pad-top) 0 76px;
 }
 
 .roles::before {
@@ -541,7 +541,7 @@ body.hero-menu-open {
   border-radius: 10px;
   background: #fff;
   box-shadow: var(--shadow-card);
-  padding: 20px 28px;
+  padding: 22px 28px 26px;
   display: flex;
   flex-direction: column;
 }
@@ -555,7 +555,7 @@ body.hero-menu-open {
 }
 
 .role-card__desc {
-  margin: 14px 0 0;
+  margin: 14px 0 14px;
   color: var(--text-body);
   font-size: 15px;
   line-height: 28px;
@@ -564,6 +564,7 @@ body.hero-menu-open {
 
 .role-card__company {
   margin-top: auto;
+  padding-top: 4px;
   display: flex;
   align-items: center;
   gap: 7px;
@@ -594,6 +595,10 @@ body.hero-menu-open {
   background: transparent;
   border-radius: 8px;
   overflow: hidden;
+}
+
+.role-card__logo--mts .role-card__logo-img {
+  object-fit: contain;
 }
 
 .role-card__logo-img {
@@ -1911,6 +1916,17 @@ html.dark .hero__links {
 
 html.dark .hero__links a {
   color: var(--dm-text-muted);
+}
+
+html.dark .hero__menu-toggle {
+  background: var(--dm-surface);
+  color: var(--dm-text);
+  border: 1px solid var(--dm-border);
+}
+
+html.dark .hero__menu-toggle:focus-visible {
+  background: rgba(255, 255, 255, 0.1);
+  outline-color: var(--dm-text-muted);
 }
 
 html.dark .hero__menu-toggle-bars,
