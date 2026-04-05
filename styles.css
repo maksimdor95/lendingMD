@@ -78,12 +78,23 @@ body {
   align-items: center;
   justify-content: center;
   box-shadow: 0 0 0 1px rgba(22, 28, 45, 0.12);
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }
 
-.hero__menu-toggle:hover,
-.hero__menu-toggle:focus-visible {
+.hero__menu-toggle:focus {
+  outline: none;
+}
+
+.hero__menu-toggle:hover {
   background: #e8eaef;
   outline: none;
+}
+
+.hero__menu-toggle:focus-visible {
+  background: #e8eaef;
+  outline: 2px solid var(--text-main);
+  outline-offset: 2px;
 }
 
 .hero__menu-toggle-bars {
@@ -259,20 +270,43 @@ body.hero-menu-open {
 
 /* Бургер, выдвижное меню и стек героя — с 700px; фото на всю ширину контентной колонки. 701+ — двухколоночный герой до правил 1300px */
 @media (max-width: 700px) {
+  html {
+    scroll-padding-top: calc(68px + env(safe-area-inset-top, 0px));
+  }
+
   .hero {
     min-height: auto;
     padding-bottom: 40px;
   }
 
+  .hero__container {
+    padding-top: calc(68px + env(safe-area-inset-top, 0px));
+  }
+
   .hero__navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 200;
     height: auto;
-    min-height: 64px;
-    padding: 16px 0;
-    justify-content: flex-start;
+    min-height: calc(48px + 20px + env(safe-area-inset-top, 0px));
+    padding: calc(10px + env(safe-area-inset-top, 0px)) max(24px, env(safe-area-inset-right, 0px)) 10px
+      max(24px, env(safe-area-inset-left, 0px));
+    justify-content: flex-end;
+    align-items: center;
+    background: #fff;
+    border-bottom: 1px solid rgba(22, 28, 45, 0.1);
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.04);
   }
 
   .hero__menu-toggle {
     display: inline-flex;
+    position: relative;
+    right: auto;
+    top: auto;
+    transform: none;
+    flex-shrink: 0;
   }
 
   .hero__nav-backdrop {
@@ -657,27 +691,51 @@ body.hero-menu-open {
 }
 
 .consulting__cases-arrows button {
+  box-sizing: border-box;
   width: 48px;
   height: 48px;
   border: 2px solid var(--text-body);
   border-radius: 100px;
   background: #fff;
   color: var(--text-body);
-  font-size: 22px;
-  line-height: 1;
-  font-weight: 600;
   cursor: pointer;
   appearance: none;
   -webkit-appearance: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
   transition: opacity 0.2s ease, background-color 0.15s ease, color 0.15s ease,
-    transform 0.15s ease;
+    border-color 0.15s ease, transform 0.15s ease;
 }
 
-.consulting__cases-arrows button:not(:disabled):hover,
-.consulting__cases-arrows button:not(:disabled):focus-visible {
+.consulting__arrow-icon {
+  display: block;
+  width: 26px;
+  height: 26px;
+  flex-shrink: 0;
+  pointer-events: none;
+}
+
+.consulting__cases-arrows button:focus {
+  outline: none;
+}
+
+.consulting__cases-arrows button:not(:disabled):hover {
   background: #e8eaef;
   color: var(--text-main);
-  outline: none;
+  border-color: var(--text-main);
+  transform: translateY(-1px);
+}
+
+.consulting__cases-arrows button:not(:disabled):focus-visible {
+  outline: 2px solid var(--text-main);
+  outline-offset: 3px;
+  background: #e8eaef;
+  color: var(--text-main);
+  border-color: var(--text-main);
   transform: translateY(-1px);
 }
 
@@ -886,7 +944,11 @@ body.hero-menu-open {
   .consulting__cases-arrows button {
     width: 48px;
     height: 48px;
-    font-size: 22px;
+  }
+
+  .consulting__arrow-icon {
+    width: 28px;
+    height: 28px;
   }
 
   .consulting__card {
