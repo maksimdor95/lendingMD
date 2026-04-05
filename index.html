@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ru">
+<html lang="ru" class="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -26,7 +26,7 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css?v=46" />
+    <link rel="stylesheet" href="styles.css?v=48" />
   </head>
   <body>
 
@@ -671,6 +671,15 @@
     <footer class="site-footer" role="contentinfo">
       <div class="site-footer__inner">
         <p class="site-footer__copy">2026. WannaNew</p>
+        <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Переключить тему">
+          <svg class="theme-toggle__icon theme-toggle__icon--sun" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="2"/>
+            <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          <svg class="theme-toggle__icon theme-toggle__icon--moon" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
       </div>
     </footer>
 
@@ -777,6 +786,33 @@
             }
           });
         }
+
+        const themeToggle = document.getElementById("theme-toggle");
+        const html = document.documentElement;
+        const THEME_KEY = "theme";
+
+        const applyTheme = (dark, animate) => {
+          if (animate) {
+            html.classList.add("theme-transitioning");
+            requestAnimationFrame(() => {
+              requestAnimationFrame(() => {
+                html.classList.toggle("dark", dark);
+                setTimeout(() => html.classList.remove("theme-transitioning"), 400);
+              });
+            });
+          } else {
+            html.classList.toggle("dark", dark);
+          }
+          localStorage.setItem(THEME_KEY, dark ? "dark" : "light");
+          themeToggle?.setAttribute("aria-label", dark ? "Светлая тема" : "Тёмная тема");
+        };
+
+        const stored = localStorage.getItem(THEME_KEY);
+        if (stored === "light") applyTheme(false, false);
+
+        themeToggle?.addEventListener("click", () => {
+          applyTheme(!html.classList.contains("dark"), true);
+        });
       })();
     </script>
 

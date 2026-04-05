@@ -1754,6 +1754,10 @@ body.hero-menu-open {
 .site-footer__inner {
   width: var(--container);
   margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
 }
 
 .site-footer__copy {
@@ -1761,8 +1765,35 @@ body.hero-menu-open {
   font-size: 15px;
   line-height: 19px;
   color: #e0e5f3;
-  text-align: center;
 }
+
+.theme-toggle {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  border: 1.5px solid rgba(224, 229, 243, 0.3);
+  border-radius: 10px;
+  background: transparent;
+  color: #e0e5f3;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.theme-toggle__icon--moon { display: none; }
+.theme-toggle__icon--sun  { display: block; }
+
+html.dark .theme-toggle__icon--moon { display: block; }
+html.dark .theme-toggle__icon--sun  { display: none; }
 
 @media (max-width: 980px) {
   .contact {
@@ -1813,6 +1844,258 @@ body.hero-menu-open {
   .site-footer__copy {
     font-size: 13px;
   }
+}
+
+/* ================================================================
+   Dark theme
+   ================================================================ */
+html.dark {
+  --dm-bg: #0f111a;
+  --dm-surface: #171b26;
+  --dm-card: #1e2233;
+  --dm-border: rgba(255, 255, 255, 0.08);
+  --dm-text: #e2e8f0;
+  --dm-text-muted: #94a3b8;
+  --dm-accent-purple-bg: rgba(105, 81, 255, 0.12);
+  color-scheme: dark;
+}
+
+html.dark body {
+  background: #07090f;
+  color: var(--dm-text);
+}
+
+html.dark .hero {
+  background: var(--dm-bg);
+}
+
+html.dark .hero__title,
+html.dark .consulting__title,
+html.dark .roles__title,
+html.dark .publications__title,
+html.dark .publications-grid__title,
+html.dark .contact__title,
+html.dark .faq-toggle__label {
+  color: var(--dm-text);
+}
+
+html.dark .hero__kicker {
+  color: var(--dm-text-muted);
+}
+
+html.dark .hero__description,
+html.dark .consulting__intro,
+html.dark .consulting__lead,
+html.dark .consulting__list li,
+html.dark .publications__intro,
+html.dark .contact__lead {
+  color: var(--dm-text-muted);
+}
+
+html.dark .hero__description.hero__description--emphasis {
+  color: var(--dm-text);
+}
+
+html.dark .hero__right img {
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+}
+
+html.dark .hero__navbar {
+  background: var(--dm-bg);
+  border-bottom-color: var(--dm-border);
+}
+
+html.dark .hero__links {
+  background: var(--dm-bg);
+}
+
+html.dark .hero__links a {
+  color: var(--dm-text-muted);
+}
+
+html.dark .hero__menu-toggle-bars,
+html.dark .hero__menu-toggle-bars::before,
+html.dark .hero__menu-toggle-bars::after {
+  background: var(--dm-text);
+}
+
+html.dark .roles {
+  background: var(--dm-bg);
+}
+
+html.dark .roles::before {
+  background: var(--dm-accent-purple-bg);
+}
+
+html.dark .role-card {
+  background: var(--dm-card);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+  border-color: var(--dm-border);
+}
+
+html.dark .role-card__role {
+  color: var(--dm-text);
+}
+
+html.dark .role-card__desc {
+  color: var(--dm-text-muted);
+}
+
+html.dark .role-card__company {
+  color: var(--dm-text);
+  border-top-color: var(--dm-border);
+}
+
+html.dark .role-card__logo--google {
+  background: var(--dm-card);
+  border-color: var(--dm-border);
+}
+
+html.dark .consulting {
+  background: var(--dm-bg);
+}
+
+html.dark .consulting__list li::before {
+  background: var(--dm-text-muted);
+}
+
+html.dark .consulting__cases-wrap {
+  background: var(--dm-accent-purple-bg);
+}
+
+html.dark .consulting__card {
+  background: var(--dm-card);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+}
+
+html.dark .consulting__card h4 {
+  color: var(--dm-text);
+}
+
+html.dark .consulting__card p {
+  color: var(--dm-text-muted);
+}
+
+html.dark .consulting__card span {
+  color: #6d8cfa;
+}
+
+html.dark .consulting__cases-head h3 {
+  color: var(--dm-text);
+}
+
+html.dark .consulting__cases-arrows button {
+  border-color: var(--dm-text-muted);
+  background: var(--dm-surface);
+  color: var(--dm-text-muted);
+}
+
+html.dark .consulting__cta {
+  border-color: var(--dm-text-muted);
+  background: transparent;
+  color: var(--dm-text);
+}
+
+html.dark .publications {
+  background: var(--dm-bg);
+}
+
+html.dark .publications-marquee__pill {
+  background: var(--dm-card);
+  color: var(--dm-text-muted);
+  border-color: var(--dm-border);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+html.dark .publications-grid {
+  background: var(--dm-bg);
+}
+
+html.dark .publications-grid__bg {
+  background: var(--dm-accent-purple-bg);
+}
+
+html.dark .pub-card {
+  background: var(--dm-card);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+}
+
+html.dark .pub-card__icon {
+  background: var(--dm-surface);
+  border-color: var(--dm-border);
+}
+
+html.dark .pub-card__title {
+  color: var(--dm-text);
+}
+
+html.dark .pub-card__link {
+  color: #6d8cfa;
+}
+
+html.dark .publications-grid__footer {
+  background: var(--dm-bg);
+}
+
+html.dark .faq-accordion {
+  background: var(--dm-card);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+}
+
+html.dark .faq-toggle {
+  background: var(--dm-card);
+  color: var(--dm-text);
+}
+
+html.dark .faq-accordion.is-open .faq-toggle {
+  border-bottom-color: var(--dm-border);
+}
+
+html.dark .faq-toggle__chev {
+  color: var(--dm-text-muted);
+}
+
+html.dark .faq-list {
+  background: var(--dm-card);
+}
+
+html.dark .faq-list li {
+  border-bottom-color: rgba(255, 255, 255, 0.06);
+}
+
+html.dark .faq-list li a {
+  color: #6d8cfa;
+}
+
+html.dark .faq-list .pub-group-label {
+  color: var(--dm-text);
+}
+
+html.dark .contact {
+  background: var(--dm-bg);
+}
+
+html.dark .contact__cta {
+  border-color: var(--dm-text-muted);
+  background: transparent;
+  color: var(--dm-text);
+}
+
+html.dark .site-footer {
+  background: #0b0d14;
+}
+
+html.dark .theme-toggle {
+  border-color: rgba(224, 229, 243, 0.15);
+}
+
+/* smooth colour transition on theme change */
+html.theme-transitioning,
+html.theme-transitioning *,
+html.theme-transitioning *::before,
+html.theme-transitioning *::after {
+  transition: background-color 0.35s ease, color 0.35s ease, border-color 0.35s ease,
+    box-shadow 0.35s ease !important;
 }
 
 /* На тач-экранах после тапа браузер держит «ложный» :hover — стили наведения только для мыши */
@@ -1871,5 +2154,45 @@ body.hero-menu-open {
 
   .faq-list li a:hover {
     text-decoration: underline;
+  }
+
+  .theme-toggle:hover {
+    border-color: rgba(224, 229, 243, 0.6);
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  html.dark .hero__menu-toggle:hover {
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  html.dark .hero__links a:hover {
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--dm-text);
+  }
+
+  html.dark .consulting__cases-arrows button:not(:disabled):hover {
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--dm-text);
+    border-color: var(--dm-text);
+  }
+
+  html.dark .consulting__cta:hover {
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--dm-text);
+    border-color: var(--dm-text);
+  }
+
+  html.dark .contact__cta:hover {
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--dm-text);
+    border-color: var(--dm-text);
+  }
+
+  html.dark .pub-card:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+  }
+
+  html.dark .faq-accordion:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
   }
 }
